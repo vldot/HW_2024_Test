@@ -30,7 +30,7 @@ public class TimerScript : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject);
+            Destroy(pulpitPrefab);
         }
     }
 
@@ -51,16 +51,16 @@ public class TimerScript : MonoBehaviour
         switch (side)
         {
             case 0: // Top side
-                spawnPosition = new Vector3(transform.position.x, 0, transform.position.z + gridHeight / 2);
+                spawnPosition = new Vector3(transform.position.x, 0, transform.position.z + gridHeight);
                 break;
             case 1: // Bottom side
-                spawnPosition = new Vector3(transform.position.x, 0, transform.position.z - gridHeight / 2);
+                spawnPosition = new Vector3(transform.position.x, 0, transform.position.z - gridHeight);
                 break;
             case 2: // Left side
-                spawnPosition = new Vector3(transform.position.x - gridWidth / 2, 0, transform.position.z);
+                spawnPosition = new Vector3(transform.position.x - gridWidth, 0, transform.position.z);
                 break;
             case 3: // Right side
-                spawnPosition = new Vector3(transform.position.x + gridWidth / 2, 0, transform.position.z);
+                spawnPosition = new Vector3(transform.position.x + gridWidth, 0, transform.position.z);
                 break;
         }
 

@@ -160,7 +160,7 @@ Camera:
   m_GameObject: {fileID: 330585543}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -275,6 +275,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1201656369}
   offset: {x: 0, y: 0, z: 0}
+--- !u!1 &408449192 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8127856133016628688, guid: f300c67bbdb83024493105ba7fef5e05,
+    type: 3}
+  m_PrefabInstance: {fileID: 2104859744}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &408449195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 408449192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 087632f4316a7c1459bd68a44160299e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minPulpitDestroyTime: 4
+  maxPulpitDestroyTime: 5
+  pulpitSpawnTime: 2.5
+  timerText: {fileID: 1547560601}
+  pulpitPrefab: {fileID: 408449192}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -713,7 +736,7 @@ Transform:
   m_GameObject: {fileID: 1201656364}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.5, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 1.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -840,7 +863,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1720262640}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: -4.07}
+  m_LocalPosition: {x: 0, y: 0, z: -3.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -849,7 +872,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -4.14, y: 1.005}
+  m_AnchoredPosition: {x: -3.34, y: 1.005}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2054719706
@@ -954,6 +977,93 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1001 &2104859744
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5199715377057501650, guid: f300c67bbdb83024493105ba7fef5e05,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5199715377057501650, guid: f300c67bbdb83024493105ba7fef5e05,
+        type: 3}
+      propertyPath: timerText
+      value: 
+      objectReference: {fileID: 1547560601}
+    - target: {fileID: 5199715377057501650, guid: f300c67bbdb83024493105ba7fef5e05,
+        type: 3}
+      propertyPath: pulpitPrefab
+      value: 
+      objectReference: {fileID: 408449192}
+    - target: {fileID: 7139558790106717574, guid: f300c67bbdb83024493105ba7fef5e05,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139558790106717574, guid: f300c67bbdb83024493105ba7fef5e05,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139558790106717574, guid: f300c67bbdb83024493105ba7fef5e05,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139558790106717574, guid: f300c67bbdb83024493105ba7fef5e05,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139558790106717574, guid: f300c67bbdb83024493105ba7fef5e05,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139558790106717574, guid: f300c67bbdb83024493105ba7fef5e05,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139558790106717574, guid: f300c67bbdb83024493105ba7fef5e05,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139558790106717574, guid: f300c67bbdb83024493105ba7fef5e05,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139558790106717574, guid: f300c67bbdb83024493105ba7fef5e05,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139558790106717574, guid: f300c67bbdb83024493105ba7fef5e05,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8127856133016628688, guid: f300c67bbdb83024493105ba7fef5e05,
+        type: 3}
+      propertyPath: m_Name
+      value: PulpitPrefab
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8127856133016628688, guid: f300c67bbdb83024493105ba7fef5e05,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 408449195}
+  m_SourcePrefab: {fileID: 100100000, guid: f300c67bbdb83024493105ba7fef5e05, type: 3}
 --- !u!1001 &4505880937385841390
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1072,79 +1182,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8ef81c54d7996247b76cdb6de0b98ba, type: 3}
---- !u!1001 &8290350195159172589
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5199715377057501650, guid: 74a6263a80af0724782cc3a998ddcdfc,
-        type: 3}
-      propertyPath: timerText
-      value: 
-      objectReference: {fileID: 1547560601}
-    - target: {fileID: 7139558790106717574, guid: 74a6263a80af0724782cc3a998ddcdfc,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1.7712475
-      objectReference: {fileID: 0}
-    - target: {fileID: 7139558790106717574, guid: 74a6263a80af0724782cc3a998ddcdfc,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.14431691
-      objectReference: {fileID: 0}
-    - target: {fileID: 7139558790106717574, guid: 74a6263a80af0724782cc3a998ddcdfc,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 8.443015
-      objectReference: {fileID: 0}
-    - target: {fileID: 7139558790106717574, guid: 74a6263a80af0724782cc3a998ddcdfc,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7139558790106717574, guid: 74a6263a80af0724782cc3a998ddcdfc,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7139558790106717574, guid: 74a6263a80af0724782cc3a998ddcdfc,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7139558790106717574, guid: 74a6263a80af0724782cc3a998ddcdfc,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7139558790106717574, guid: 74a6263a80af0724782cc3a998ddcdfc,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7139558790106717574, guid: 74a6263a80af0724782cc3a998ddcdfc,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7139558790106717574, guid: 74a6263a80af0724782cc3a998ddcdfc,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8127856133016628688, guid: 74a6263a80af0724782cc3a998ddcdfc,
-        type: 3}
-      propertyPath: m_Name
-      value: PulpitContainer
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 74a6263a80af0724782cc3a998ddcdfc, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1153,7 +1190,7 @@ SceneRoots:
   - {fileID: 410087041}
   - {fileID: 832575519}
   - {fileID: 1201656369}
-  - {fileID: 8290350195159172589}
+  - {fileID: 2104859744}
   - {fileID: 1720262644}
   - {fileID: 754024296}
   - {fileID: 2054719710}
