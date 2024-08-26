@@ -7,12 +7,11 @@ public class TimerScript : MonoBehaviour
 {
     public float minPulpitDestroyTime = 4f;
     public float maxPulpitDestroyTime = 5f;
-    public float pulpitSpawnTime = 2.5f;
     public TextMeshProUGUI timerText;
-    public GameObject pulpitPrefab;
-
     private float destroyTime;
     private float remainingTime;
+    private bool isScalingDown = false;
+    public GameObject pulpitPrefab;
 
     void Start()
     {
@@ -23,20 +22,33 @@ public class TimerScript : MonoBehaviour
 
     void Update()
     {
-        if (remainingTime > 0)
+        if (remainingTime > 0 && !isScalingDown)
         {
             remainingTime -= Time.deltaTime;
-            timerText.text = Mathf.Ceil(remainingTime).ToString() + "s";
+            timerText.text = Mathf.Ceil(remainingTime).ToString("F1");
         }
-        else
+        else if (!isScalingDown)
         {
-            Destroy(pulpitPrefab);
+            StartCoroutine(ScaleDownAndDestroy());
         }
+    }
+
+    IEnumerator ScaleDownAndDestroy()
+    {
+        isScalingDown = true;
+        Vector3 initialScale = transform.localScale;
+        float scaleTime = 0.5f;
+        for (float t = 0; t < scaleTime; t += Time.deltaTime)
+        {
+            transform.localScale = Vector3.Lerp(initialScale, Vector3.zero, t / scaleTime);
+            yield return null;
+        }
+        Destroy(gameObject);
     }
 
     IEnumerator SpawnPulpitBeforeDestroy()
     {
-        yield return new WaitForSeconds(destroyTime - pulpitSpawnTime);
+        yield return new WaitForSeconds(destroyTime - 2.5f);
         SpawnNewPulpit();
     }
 
