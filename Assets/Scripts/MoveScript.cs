@@ -23,7 +23,6 @@ public class MoveScript : MonoBehaviour
         if (collision.gameObject.CompareTag("Pulpit"))
         {
             scoreManager.AddScore(1);
-            Debug.Log("Score updated: " + scoreManager);
         }
     }
 
@@ -70,8 +69,8 @@ public class MoveScript : MonoBehaviour
             string json = request.downloadHandler.text;
             DoofusData data = JsonUtility.FromJson<DoofusData>(json);
 
-            // Assuming speed is an integer; multiply by 150 to match your original speed scale
             speed = data.player_data.speed * 150;
+            Debug.Log("Speed updated: " + speed);
         }
         else
         {
