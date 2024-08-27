@@ -1,17 +1,37 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
 public class MoveScript : MonoBehaviour
 {
-    public int speed = 300;
+    public int speed = 800; // Default value
     private bool isRotating = false;
+    private string jsonUrl = "https://s3.ap-south-1.amazonaws.com/superstars.assetbundles.testbuild/doofus_game/doofus_diary.json";
+    public ScoreManager scoreManager;
+
+    void Start()
+    {
+        if (scoreManager == null) {
+            scoreManager = FindObjectOfType<ScoreManager>();
+        }
+        StartCoroutine(FetchDataFromJson());
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("Collision detected with: " + collision.gameObject.name);
+        if (collision.gameObject.CompareTag("Pulpit"))
+        {
+            scoreManager.AddScore(1);
+            Debug.Log("Score updated: " + scoreManager);
+        }
+    }
 
     void Update() {
         if (isRotating) {
             return;
         }
-        
+
         if (Input.GetKey(KeyCode.D) && !isRotating) {
             StartCoroutine(Roll(Vector3.right));
         } else if (Input.GetKey(KeyCode.A) && !isRotating) {
@@ -39,4 +59,35 @@ public class MoveScript : MonoBehaviour
 
         isRotating = false;
     }
+
+    IEnumerator FetchDataFromJson()
+    {
+        UnityWebRequest request = UnityWebRequest.Get(jsonUrl);
+        yield return request.SendWebRequest();
+
+        if (request.result == UnityWebRequest.Result.Success)
+        {
+            string json = request.downloadHandler.text;
+            DoofusData data = JsonUtility.FromJson<DoofusData>(json);
+
+            // Assuming speed is an integer; multiply by 150 to match your original speed scale
+            speed = data.player_data.speed * 150;
+        }
+        else
+        {
+            Debug.LogError("Failed to load JSON data: " + request.error);
+        }
+    }
+}
+
+[System.Serializable]
+public class DoofusData
+{
+    public PlayerData player_data;
+}
+
+[System.Serializable]
+public class PlayerData
+{
+    public int speed;
 }

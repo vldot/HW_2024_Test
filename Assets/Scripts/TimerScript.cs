@@ -12,11 +12,13 @@ public class TimerScript : MonoBehaviour
     private float remainingTime;
     private bool isScalingDown = false;
     public GameObject pulpitPrefab;
+    private ScoreManager scoreManager;
 
     void Start()
     {
         destroyTime = Random.Range(minPulpitDestroyTime, maxPulpitDestroyTime);
         remainingTime = destroyTime;
+        scoreManager = FindObjectOfType<ScoreManager>();
         StartCoroutine(SpawnPulpitBeforeDestroy());
     }
 
@@ -25,7 +27,7 @@ public class TimerScript : MonoBehaviour
         if (remainingTime > 0 && !isScalingDown)
         {
             remainingTime -= Time.deltaTime;
-            timerText.text = Mathf.Ceil(remainingTime).ToString("F1");
+            timerText.text = remainingTime.ToString("F2");
         }
         else if (!isScalingDown)
         {
@@ -43,6 +45,7 @@ public class TimerScript : MonoBehaviour
             transform.localScale = Vector3.Lerp(initialScale, Vector3.zero, t / scaleTime);
             yield return null;
         }
+        scoreManager.AddScore(1);
         Destroy(gameObject);
     }
 

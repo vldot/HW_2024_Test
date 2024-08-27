@@ -4,24 +4,19 @@ using UnityEngine;
 
 public class ExplodeScript : MonoBehaviour
 {
-    public int cubesPerAxis = 8;
+    public int cubesPerAxis = 4;
     public float delay = 1f;
-    public float force = 300f;
-    public float radius = 2f;
+    public float force = 50f;
+    public float radius = 1.5f;
 
-    void Start() {
-        Invoke("Main", delay);
-    }
-
-    void Main() {
+    public void Main() {
         for (int x = 0; x < cubesPerAxis; x++) {
             for (int y = 0; y < cubesPerAxis; y++) {
                 for (int z = 0; z < cubesPerAxis; z++) {
                     CreatePiece(new Vector3(x, y, z));
                 }
             }
-        }
-        
+        } 
         Destroy(gameObject);
     }
 
@@ -43,6 +38,8 @@ public class ExplodeScript : MonoBehaviour
          piece.transform.position = firstPiece + Vector3.Scale(coordinates, piece.transform.localScale);
 
          Rigidbody rb = piece.AddComponent<Rigidbody>();
+         rb.mass = 0.3f;
          rb.AddExplosionForce(force, transform.position, radius);
+         Destroy(piece, 3f);
     }
 }
